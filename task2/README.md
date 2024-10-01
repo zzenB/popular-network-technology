@@ -4,7 +4,7 @@ Task 2: Create a web service in Go with two endpoint and create a Dockerfile for
 
 ## Download link
 
-<https://downgit.evecalm.com/#/home?url=https://github.com/zzenB/popular-network-technology/tree/main/task1>
+<https://downgit.evecalm.com/#/home?url=https://github.com/zzenB/popular-network-technology/tree/main/task2>
 
 ## Notes
 
