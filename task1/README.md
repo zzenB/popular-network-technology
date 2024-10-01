@@ -1,3 +1,7 @@
+## Description
+
+Task 1: Create an Azure VM + Bonus Task: Create a private SQL server/database inside the VNET
+
 ## Download link
 
 <https://downgit.evecalm.com/#/home?url=https://github.com/zzenB/popular-network-technology/tree/main/task1>

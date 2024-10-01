@@ -1,2 +1,3 @@
-**Popular Network Technology**  
-Task 1: Create an Azure VM + Bonus Task: Create a private SQL server/database inside the VNET
+## Popular Network Technology
+
+Git repo for storing code from Popular Network Technology course tasks.
