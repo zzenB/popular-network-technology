@@ -8,4 +8,4 @@ Challenge Sesi 7: .yaml deployment & service
 
 ## Notes
 
-None
+use minikube tunnel
