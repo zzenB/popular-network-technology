@@ -3,6 +3,11 @@ kind: Pod
 metadata:
   name: dockertest-webservice
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   containers:
     - name: dockertest-webservice
       image: rifaldoas/dockertest-webservice

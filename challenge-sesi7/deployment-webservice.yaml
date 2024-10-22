@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webservice-deployment
+  labels:
+    app: dockertest-webservice
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: dockertest-webservice
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: dockertest-webservice
+    spec:
+      containers:
+        - name: dockertest-webservice
+          image: rifaldoas/dockertest-webservice
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 8080
