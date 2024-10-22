@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dockertest-webservice
+spec:
+  containers:
+    - name: dockertest-webservice
+      image: rifaldoas/dockertest-webservice
+      ports:
+        - containerPort: 8080
