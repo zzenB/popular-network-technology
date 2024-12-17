@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pnt-deployment2
+  labels:
+    app: nginx2
+spec:
+  selector:
+    matchLabels:
+      app: nginx2
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nginx2
+    spec:
+      containers:
+        - name: nginx-container2
+          image: nginx:latest
+          imagePullPolicy:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: index1
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: index1
+          configMap:
+            name: tls-app
+      restartPolicy: Always
+---
+

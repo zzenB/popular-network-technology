@@ -1,0 +1,185 @@
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tls-app
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Snake Game</title>
+      <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #222;
+          color: #fff;
+          font-family: Arial, sans-serif;
+        }
+
+        #game-board {
+          display: grid;
+          grid-template-rows: repeat(20, 20px);
+          grid-template-columns: repeat(20, 20px);
+          gap: 1px;
+          background-color: #333;
+        }
+
+        .cell {
+          width: 20px;
+          height: 20px;
+          background-color: #444;
+        }
+
+        .snake {
+          background-color: #0f0;
+        }
+
+        .food {
+          background-color: #f00;
+        }
+
+        #stats {
+          margin-top: 20px;
+          display: flex;
+          justify-content: space-between;
+          width: 300px;
+        }
+
+        #restart {
+          padding: 5px 10px;
+          background-color: #444;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
+        }
+
+        #restart:hover {
+          background-color: #666;
+        }
+
+        #title {
+          margin-bottom: 20px;
+          font-size: 24px;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="title">PNT App Test (CertManager version)</div>
+      <div id="game-board"></div>
+      <div id="stats">
+        <div>Score: <span id="score">0</span></div>
+        <button id="restart">Restart</button>
+      </div>
+      <script>
+        const boardSize = 20;
+        const board = document.getElementById('game-board');
+        const scoreDisplay = document.getElementById('score');
+        const restartButton = document.getElementById('restart');
+
+        // Create the grid
+        for (let i = 0; i < boardSize * boardSize; i++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          board.appendChild(cell);
+        }
+
+        const cells = document.querySelectorAll('.cell');
+        let snake = [2, 1, 0]; // Snake starts as 3 blocks
+        let direction = 1; // 1 means moving right
+        let foodIndex = 0;
+        let score = 0;
+        let gameLoop;
+
+        // Place food on the grid
+        function placeFood() {
+          do {
+            foodIndex = Math.floor(Math.random() * cells.length);
+          } while (cells[foodIndex].classList.contains('snake'));
+          cells[foodIndex].classList.add('food');
+        }
+
+        // Move the snake
+        function moveSnake() {
+          const head = snake[0];
+          const tail = snake.pop();
+          cells[tail].classList.remove('snake');
+
+          const newHead = head + direction;
+          if (
+            newHead < 0 ||
+            newHead >= cells.length ||
+            (direction === -1 && head % boardSize === 0) ||
+            (direction === 1 && head % boardSize === boardSize - 1) ||
+            cells[newHead].classList.contains('snake')
+          ) {
+            alert('Game Over! Your score: ' + score);
+            clearInterval(gameLoop);
+            return;
+          }
+
+          snake.unshift(newHead);
+          cells[newHead].classList.add('snake');
+
+          if (newHead === foodIndex) {
+            score++;
+            scoreDisplay.textContent = score;
+            snake.push(tail);
+            cells[tail].classList.add('snake');
+            cells[foodIndex].classList.remove('food');
+            placeFood();
+          }
+        }
+
+        // Change direction with arrow keys
+        function changeDirection(e) {
+          switch (e.key) {
+            case 'ArrowUp':
+              if (direction !== boardSize) direction = -boardSize;
+              break;
+            case 'ArrowDown':
+              if (direction !== -boardSize) direction = boardSize;
+              break;
+            case 'ArrowLeft':
+              if (direction !== 1) direction = -1;
+              break;
+            case 'ArrowRight':
+              if (direction !== -1) direction = 1;
+              break;
+          }
+        }
+
+        // Initialize the game
+        function startGame() {
+          snake.forEach(index => cells[index].classList.add('snake'));
+          placeFood();
+          document.addEventListener('keydown', changeDirection);
+          gameLoop = setInterval(moveSnake, 200);
+        }
+
+        // Restart the game
+        restartButton.addEventListener('click', () => {
+          clearInterval(gameLoop);
+          snake.forEach(index => cells[index].classList.remove('snake'));
+          cells[foodIndex].classList.remove('food');
+          snake = [2, 1, 0];
+          direction = 1;
+          score = 0;
+          scoreDisplay.textContent = score;
+          startGame();
+        });
+
+        startGame();
+      </script>
+    </body>
+    </html>
+---
+

@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  index.html: |
+    <html>
+    <h1>Hello world! This website is deployed with Kubernetes!</h1>
+    </html>
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"index.html":"\u003chtml\u003e\n\u003ch1\u003eHello world! This website is deployed with Kubernetes!\u003c/h1\u003e\n\u003c/html\u003e\n"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"customhtml","namespace":"ingress-nginx"}}
+  creationTimestamp: "2024-12-16T11:42:26Z"
+  name: customhtml
+  namespace: ingress-nginx
+  resourceVersion: "21171"
+  uid: 338eb0e8-bdb9-4a53-b35e-cf6466a43df6
