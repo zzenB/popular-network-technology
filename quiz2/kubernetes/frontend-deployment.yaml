@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdf-frontend
+  template:
+    metadata:
+      labels:
+        app: pdf-frontend
+    spec:
+      containers:
+        - name: nginx
+          image: atrus727/pdf-compressor-frontend:latest
+          ports:
+            - containerPort: 80

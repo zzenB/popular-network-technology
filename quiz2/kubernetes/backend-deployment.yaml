@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdf-compressor-backend
+  template:
+    metadata:
+      labels:
+        app: pdf-compressor-backend
+    spec:
+      containers:
+        - name: pdf-compressor
+          image: atrus727/pdf-compressor-backend:latest
+          ports:
+            - containerPort: 1337
+          volumeMounts:
+            - mountPath: /uploads
+              name: upload-volume
+            - mountPath: /download
+              name: download-volume
+      volumes:
+        - name: upload-volume
+          emptyDir: {}
+        - name: download-volume
+          emptyDir: {}

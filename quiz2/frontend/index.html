@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Compressor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>PDF Compressor</h1>
+    <p>Upload your PDF file to compress it and download the compressed version.</p>
+    <p>Maximum file size: 10 MB</p>
+
+    <div id="upload-section">
+      <input type="file" id="file-input" accept="application/pdf" />
+      <button id="upload-button">Upload and Compress</button>
+    </div>
+
+    <div id="progress-section" style="display: none;">
+      <p id="status-message">Uploading...</p>
+      <div class="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div id="download-section" style="display: none;">
+      <p>Compression complete! Download your compressed PDF:</p>
+      <a id="download-link" href="#" target="_blank">Download PDF</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
