@@ -5,7 +5,8 @@ Case Study for Popular Network Technology Quiz:
 
 ## Download link
 
-<https://downgit.evecalm.com/#/home?url=https://github.com/zzenB/popular-network-technology/tree/main/quiz2>
+~~<https://downgit.evecalm.com/#/home?url=https://github.com/zzenB/popular-network-technology/tree/main/quiz2>~~  
+Downgit is down? so https://github.com/zzenB/popular-network-technology/releases/download/pnt/quiz2.zip or pull the whole repo
 
 ## Notes
 
