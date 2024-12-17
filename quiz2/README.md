@@ -1,7 +1,8 @@
 ## Popular Network Technology
 
-Case Study for Popular Network Technology Quiz:
-![image](https://i.imgur.com/CxYQFnU.png)
+Case Study for Popular Network Technology Quiz:  
+![image](https://i.imgur.com/CxYQFnU.png)  
+Head over to pdf.rifaldoagustinus.com to see the app
 
 ## Download link
 
