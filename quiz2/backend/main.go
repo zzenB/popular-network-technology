@@ -1,3 +1,4 @@
+// messy code sorry ;)
 package main
 
 import (
@@ -30,7 +31,6 @@ type Service struct {
 
 // NewService creates a new PDF compression service
 func NewService() *Service {
-	// Create upload and download directories if they don't exist
 	uploadDir := "./uploads"
 	downloadDir := "./downloads"
 
@@ -123,17 +123,13 @@ func (s *Service) DownloadHandler(c *gin.Context) {
 	c.FileAttachment(filepath, "compressed.pdf")
 }
 
-// compressPDF compresses a PDF file using pdfcpu
+// Compresses a PDF file using pdfcpu
 func (s *Service) compressPDF(inputPath, outputPath string) error {
 	conf := model.NewDefaultConfiguration()
-	// Set optimization options
-	// conf.Optimize.CompressImages = true
-	// conf.Optimize.ImageQuality = 75
-
 	return api.OptimizeFile(inputPath, outputPath, conf)
 }
 
-// cleanupOldFiles removes files older than 24 hours from both directories
+// Removes files older than 24 hours from both directories
 func (s *Service) cleanupOldFiles() {
 	ticker := time.NewTicker(1 * time.Hour)
 	go func() {
@@ -182,11 +178,6 @@ func main() {
 	// Setup routes
 	router.POST("/upload", service.UploadHandler)
 	router.GET("/download/:fileId", service.DownloadHandler)
-
-	// Add health check endpoint
-	router.GET("/health", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"status": "healthy"})
-	})
 
 	// Start server
 	if err := router.Run(":1337"); err != nil {
