@@ -2,12 +2,17 @@
 
 Case Study for Popular Network Technology Quiz:  
 ![image](https://i.imgur.com/CxYQFnU.png)  
-Head over to pdf.rifaldoagustinus.com to see the app
+~~Head over to pdf.rifaldoagustinus.com to see the app~~  
+(19/12/24) Cluster deactivated to save cost and to reuse the public IP for other things.  
+Proof for posterity:  
+![k8s resources view](https://i.imgur.com/4VavuV8.png">)  
+
+![k9s view](https://i.imgur.com/ItXpJeV.png)
 
 ## Download link
 
 ~~<https://downgit.evecalm.com/#/home?url=https://github.com/zzenB/popular-network-technology/tree/main/quiz2>~~  
-Downgit is down? so https://github.com/zzenB/popular-network-technology/releases/download/pnt/quiz2.zip or pull the whole repo
+Downgit is down? so <https://github.com/zzenB/popular-network-technology/releases/download/pnt/quiz2.zip> or pull the whole repo
 
 ## Notes
 
